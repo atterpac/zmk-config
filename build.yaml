@@ -11,8 +11,8 @@
 #   - board: nice_nano_v2
 #     shield: reviung41
 #
-
-board: "nice_nano_v2"
-shield: "dactyl_left"
+include:
+    -board: nice_nano_v2
+    -shield: dactyl_left
       # - board: nice_nano_v2
     #    shield: dactyl_right
