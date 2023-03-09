@@ -5,6 +5,7 @@
 
 #define DEFAULT 0
 #define GAME   1
+#define ADJUST 2
 
 #define HYPER(key) LS(LC(LA(LG(key))))
 #define MEH(key)   LS(LC(LA(key)))
