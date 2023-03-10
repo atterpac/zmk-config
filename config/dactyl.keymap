@@ -32,9 +32,9 @@
     &mo RAISE   &kp A     &kp S     &kp D      &kp F     &kp G                            &kp H     &kp J     &kp K     &kp L     &kp SEMI &kp SQT
     &mo ADJUST  &kp Z     &kp X     &kp C      &kp V     &kp B                            &kp N     &kp M     &kp COMMA &kp DOT   &kp FSLH &kp RSHFT
                           &kp LEFT  &kp RIGHT                                                                 &kp LPAR  &kp RPAR
-                                                      &kp LSHIFT &kp SPACE   &kp RCTRL  &kp RET 
-                                                      &kp BSPC   &kp         &kp BSPC  &kp CAPS
-                                                      &kp LGUI  &kp LALT     &kp DEL   &kp GRAVE
+                                                      &kp LSHIFT &kp SPACE    &kp RCTRL  &kp RET 
+                                                      &kp BSPC   &kp ESC      &kp BSPC  &kp CAPS
+                                                      &kp LGUI   &kp LALT     &kp DEL   &kp GRAVE
             >;
         };
 
