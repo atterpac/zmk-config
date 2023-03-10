@@ -6,6 +6,7 @@
 #define DEFAULT 0
 #define GAME   1
 #define ADJUST 2
+#define RAISE 3
 
 #define HYPER(key) LS(LC(LA(LG(key))))
 #define MEH(key)   LS(LC(LA(key)))
@@ -28,25 +29,25 @@
             bindings = <
     &kp ESC     &kp N1    &kp N2    &kp N3     &kp N4    &kp N5                           &kp N6    &kp N7    &kp N8    &kp N9    &kp N0   &tog GAME
     &kp TAB     &kp Q     &kp W     &kp E      &kp R     &kp T                            &kp Y     &kp U     &kp I     &kp O     &kp P    &kp BSLH
-    &tog GAME   &kp A     &kp S     &kp D      &kp F     &kp G                            &kp H     &kp J     &kp K     &kp L     &kp SEMI &kp SQT
+    &mo RAISE   &kp A     &kp S     &kp D      &kp F     &kp G                            &kp H     &kp J     &kp K     &kp L     &kp SEMI &kp SQT
     &mo ADJUST  &kp Z     &kp X     &kp C      &kp V     &kp B                            &kp N     &kp M     &kp COMMA &kp DOT   &kp FSLH &kp RSHFT
-                          &kp LEFT  &kp RIGHT                                                                 &kp LBKT  &kp RBKT
-                                                      &kp LSHIFT &kp SPACE   &kp LBKT  &kp RBKT
-                                                      &kp BSPC   &kp RET    &kp BSPC  &kp SPACE
-                                                      &kp LGUI  &kp LALT    &kp DEL   &kp RET
+                          &kp LEFT  &kp RIGHT                                                                 &kp LPAR  &kp RPAR
+                                                      &kp LSHIFT &kp SPACE   &kp RCTRL  &kp RET 
+                                                      &kp BSPC   &kp         &kp BSPC  &kp CAPS
+                                                      &kp LGUI  &kp LALT     &kp DEL   &kp GRAVE
             >;
         };
 
         game_layer {
             bindings = <
-    &trans     &trans    &trans   &trans    &trans    &trans                          &trans    &trans    &trans    &trans    &trans    &trans
-    &trans     &kp T     &kp Q    &kp W     &kp E     &kp R                           &trans    &trans    &trans    &trans    &trans    &trans
-    &tog GAME  &kp LSHFT &kp A    &kp S     &kp D     &kp F                           &trans    &trans    &trans    &trans    &trans    &trans
-    &kp ESC    &trans    &kp Z    &kp X     &kp C     &kp V                          &trans    &trans    &trans    &trans    &trans    &trans
-                         &kp F5   &kp F6                                                                  &trans    &trans    
-                                                        &kp LCTRL  &kp LSHIFT      &trans    &trans
-                                                        &kp RET &kp LALT      &trans    &trans   
-                                                        &trans  &kp SPACE     &trans    &trans   
+    &trans     &trans    &trans   &trans    &trans    &trans                             &trans    &trans    &trans    &trans    &trans    &trans
+    &trans     &kp T     &kp Q    &kp W     &kp E     &kp R                              &trans    &trans    &trans    &trans    &trans    &trans
+    &trans     &kp LSHFT &kp A    &kp S     &kp D     &kp F                              &trans    &trans    &trans    &trans    &trans    &trans
+    &kp LCTRL  &trans    &kp Z    &kp X     &kp C     &kp V                              &trans    &trans    &trans    &trans    &trans    &trans
+                         &kp F5   &kp F6                                                                     &trans    &trans    
+                                                        &kp LSHIFT  &kp LCTRL     &trans    &trans
+                                                        &kp RET     &kp LALT      &trans    &trans   
+                                                        &trans      &kp SPACE     &trans    &trans   
             >;
         };
 
@@ -62,5 +63,17 @@
                                                                   &none       &none       &none     &none    
             >;
         };
+
+        raise_layer {
+            bindings = <
+    &trans     &kp EXCL    &kp AT    &kp POUND  &kp DLLR   &kp PRCNT                        &kp CARET &kp AMPS  &kp STAR  &kp MINUS &kp PLUS  &kp EQUAL
+    &trans     &trans      &trans    &trans     &trans     &trans                           &trans    &trans    &trans    &trans    &trans    &trans
+    &trans     &trans      &trans    &trans     &trans     &trans                           &trans    &kp DOT   &kp DQT   &trans    &trans    &trans
+    &kp LCTRL    &trans    &trans    &trans     &trans     &trans                           &trans    &trans    &trans    &trans    &trans    &trans
+                         &kp LBRC   &kp RBRC                                                                    &kp LBKT  &kp RBKT    
+                                                        &trans  &trans      &trans    &trans
+                                                        &trans &trans      &trans    &trans   
+                                                        &trans  &trans     &trans    &trans   
+            >;
     };
 };
