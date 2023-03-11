@@ -10,19 +10,15 @@
 
 #define HYPER(key) LS(LC(LA(LG(key))))
 #define MEH(key)   LS(LC(LA(key)))
-
-&sl {
-    release-after-ms = <5000>;
+&sl { release-after-ms = <5000>;
 };
 
-
-&kscan0 {
-    debounce-press-ms = <30>;
+&kscan0 { 
+    debounce-press-ms = <30>; 
     debounce-release-ms = <30>;
 };
+/ { keymap { 
 
-/ {
-    keymap {
         compatible = "zmk,keymap";
 
         default_layer {
@@ -32,7 +28,7 @@
     &mo RAISE   &kp A     &kp S     &kp D      &kp F     &kp G                            &kp H     &kp J     &kp K     &kp L     &kp SEMI &kp SQT
     &mo ADJUST  &kp Z     &kp X     &kp C      &kp V     &kp B                            &kp N     &kp M     &kp COMMA &kp DOT   &kp FSLH &kp RSHFT
                           &kp LEFT  &kp RIGHT                                                                 &kp LPAR  &kp RPAR
-                                                      &kp LSHIFT &kp SPACE    &kp RCTRL  &kp RET 
+                                                      &kp LSHIFT &kp SPACE    &kp RET  &kp RCTRL 
                                                       &kp BSPC   &kp ESC      &kp BSPC  &kp CAPS
                                                       &kp LGUI   &kp LALT     &kp DEL   &kp GRAVE
             >;
@@ -43,9 +39,9 @@
     &trans     &trans    &trans   &trans    &trans    &trans                             &trans    &trans    &trans    &trans    &trans    &trans
     &trans     &kp T     &kp Q    &kp W     &kp E     &kp R                              &trans    &trans    &trans    &trans    &trans    &trans
     &trans     &kp LSHFT &kp A    &kp S     &kp D     &kp F                              &trans    &trans    &trans    &trans    &trans    &trans
-    &kp LCTRL  &trans    &kp Z    &kp X     &kp C     &kp V                              &trans    &trans    &trans    &trans    &trans    &trans
-                         &kp F5   &kp F6                                                                     &trans    &trans    
-                                                        &kp LSHIFT  &kp LCTRL     &trans    &trans
+    &kp LCTRL  &kp CAPS  &kp Z    &kp X     &kp C     &kp V                              &trans    &trans    &trans    &trans    &trans    &trans
+                         &kp F5   &kp G                                                                     &trans    &trans    
+                                                        &kp HOME  &kp LCTRL     &trans    &trans
                                                         &kp RET     &kp LALT      &trans    &trans   
                                                         &trans      &kp SPACE     &trans    &trans   
             >;
