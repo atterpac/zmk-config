@@ -11,9 +11,6 @@
 
 #define HYPER(key) LS(LC(LA(LG(key))))
 #define MEH(key)   LS(LC(LA(key)))
-#define COPY  LC(C)
-#define PASTE LC(V)
-#define CUT   LC(X)
 &sl { release-after-ms = <5000>;
 };
 
@@ -55,7 +52,7 @@
             bindings = <
     &none       &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3  &bt BT_SEL 4                         &none       &none     &none     &none     &none    &none  
     &trans      &out OUT_USB &kp K_VOL_DN &kp K_MUTE   &kp K_VOL_UP &none                                &none       &reset    &none     &none     &none    &none   
-    &trans      &out OUT_BTE &kp K_PREV   &kp K_PP     &kp K_NEXT    &reset                               &reset       &none     &none     &none     &none    &none   
+    &trans      &out OUT_BLE &kp K_PREV   &kp K_PP     &kp K_NEXT    &reset                               &reset       &none     &none     &none     &none    &none   
     &tog ADJUST &none        &bt BT_CLR   &none        &none         &bootloader                          &bootloader &none     &none     &none     &none    &none   
                              &none        &none                                                                                &none     &none 
                                                                   &none       &none       &none     &none 
@@ -66,30 +63,17 @@
 
         num_layer {
             bindings = <
-    &trans      &kp DEL     &kp AT    &kp POUND   &kp DLLR     &kp BSLH                         &kp CARET   &kp AMPS  &kp STAR  &kp MINUS &kp PLUS  &kp EQUAL
-    &kp GRAVE   &kp DEL     &none     &kp LPAR    &kp RPAR     &trans                           &kp FSLH    &kp N7    &kp N8    &kp N9    &kp MINUS &kp BSPC
-    &trans      &kp MINUS   &kp EQUAL &kp LBKT    &kp RBKT     &trans                           &kp STAR    &kp N4    &kp N5    &kp N6    &kp PLUS  &kp EQUAL
-    &kp LCTRL   &trans      &trans    &trans      &trans       &trans                           &kp COMMA   &kp N1    &kp N2    &kp N3    &kp DOT   &none
-                            &kp LBRC   &kp RBRC                                                                       &kp N0    &kp RET    
+    &trans      &kp DEL     &kp AT      &kp POUND   &kp DLLR     &kp BSLH                         &kp CARET   &kp AMPS  &kp STAR  &kp MINUS &kp PLUS  &kp EQUAL
+    &kp GRAVE   &kp DEL     &none       &kp LPAR    &kp RPAR     &trans                           &kp FSLH    &kp N7    &kp N8    &kp N9    &kp MINUS &kp BSPC
+    &trans      &kp MINUS   &kp EQUAL   &kp LBKT    &kp RBKT     &trans                           &kp STAR    &kp N4    &kp N5    &kp N6    &kp PLUS  &kp EQUAL
+    &kp LCTRL   &kp K_CUT   &kp K_UNDO  &kp K_COPY &kp K_PASTE   &kp K_REDO                           &kp COMMA   &kp N1    &kp N2    &kp N3    &kp DOT   &none
+                            &kp LBRC    &kp RBRC                                                                       &kp N0    &kp RET    
                                                         &trans  &trans      &trans    &trans
                                                         &trans &trans      &trans    &trans   
                                                         &trans  &trans     &trans    &trans   
             >;
     };
-        adjust_layer {
-            bindings = <
-    &none       &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3  &bt BT_SEL 4                         &none       &none     &none     &none     &none    &none  
-    &trans      &out OUT_USB &kp K_VOL_DN &kp K_MUTE   &kp K_VOL_UPL &none                                &none       &reset    &none     &none     &none    &none   
-    &trans      &out OUT_BTE &kp K_PREV   &kp K_PP     &kp K_NEXT    &reset                               &reset       &none     &none     &none     &none    &none   
-    &tog ADJUST &none        &bt BT_CLR   &none        &none         &bootloader                          &bootloader &none     &none     &none     &none    &none   
-                             &none        &none                                                                                &none     &none 
-                                                                  &none       &none       &none     &none 
-                                                                  &none       &none       &none     &none
-                                                                  &none       &none       &none     &none    
-            >;
-        };
-        
-        fkeys_layer {
+        fkeys_layer { 
             bindings = <
     &none   &none   &none    &none      &none     &none                          &none       &kp F10    &kp F11    &kp F12    &none    &none  
     &none   &none   &none    &kp UP     &none     &none                          &none       &kp F7     &kp F8     &kp F9     &none    &none   
