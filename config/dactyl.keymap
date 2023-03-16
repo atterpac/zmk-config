@@ -33,7 +33,7 @@
     };
 };
 
-{
+/{
     macros {
         ggs: ggs {
             label = "ggs";
@@ -70,8 +70,8 @@
     &trans     &kp LSHFT &kp A    &kp S     &kp D     &kp F                              &trans    &trans    &trans    &trans    &trans    &trans
     &kp LCTRL  &kp CAPS  &kp Z    &kp X     &kp C     &kp V                              &trans    &trans    &trans    &trans    &trans    &trans
                          &kp F5   &kp G                                                                     &trans    &trans    
-                                                        &trans      &trans       &lt DEFAULT RET   &trans
-                                                        &lt FKEYS RET     &kp LALT     &trans    &trans   
+                                                        &trans      &trans       &kp RET &trans
+                                                        &lt FKEYS RET &kp LALT    &trans    &trans   
                                                         &trans      &kp BSPC     &trans    &trans   
             >;
         };
