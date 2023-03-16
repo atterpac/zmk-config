@@ -9,14 +9,42 @@
 #define NUM 3
 #define FKEYS 4
 
+
+
 #define HYPER(key) LS(LC(LA(LG(key))))
 #define MEH(key)   LS(LC(LA(key)))
+#define GG LS(RET)
 &sl { release-after-ms = <5000>;
 };
 
 &kscan0 { 
     debounce-press-ms = <30>; 
     debounce-release-ms = <30>;
+};
+
+/ {
+    combos {
+        compatible = "zmk,combos";
+        combo_gg {
+            timeout-ms = <50>;
+            key-positions = <45 46>;
+            bindings = <&kp LS(RET)>;
+        };
+    };
+};
+
+{
+    macros {
+        ggs: ggs {
+            label = "ggs";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LS(RET)>
+                , <&macro_tap &kp G &kp G &kp RET>
+                ;
+        };
+    };
 };
 / { keymap { 
 
@@ -37,13 +65,13 @@
 
         game_layer {
             bindings = <
-    &trans     &trans    &trans   &trans    &trans    &trans                             &trans    &trans    &trans    &trans    &trans    &trans
+    &trans     &trans    &trans   &trans    &trans    &ggs                             &trans    &trans    &trans    &trans    &trans    &trans
     &trans     &kp T     &kp Q    &kp W     &kp E     &kp R                              &trans    &trans    &trans    &trans    &trans    &trans
     &trans     &kp LSHFT &kp A    &kp S     &kp D     &kp F                              &trans    &trans    &trans    &trans    &trans    &trans
     &kp LCTRL  &kp CAPS  &kp Z    &kp X     &kp C     &kp V                              &trans    &trans    &trans    &trans    &trans    &trans
                          &kp F5   &kp G                                                                     &trans    &trans    
                                                         &trans      &trans       &lt DEFAULT RET   &trans
-                                                        &kp RET     &kp LALT     &trans    &trans   
+                                                        &lt FKEYS RET     &kp LALT     &trans    &trans   
                                                         &trans      &kp BSPC     &trans    &trans   
             >;
         };
