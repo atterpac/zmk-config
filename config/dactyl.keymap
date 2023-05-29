@@ -15,8 +15,14 @@
 &sl {
     release-after-ms = <5000>;
 };
-// {
-behaviors {
+
+&kscan0 {
+    debounce-press-ms = <30>;
+    debounce-release-ms = <30>;
+};
+
+/ {
+    behaviors {
     LTHAN: less_then_tap {
         compatible = "zmk,behavior-tap-dance";
         label = "LESS_THEN_TAP";
@@ -63,13 +69,6 @@ behaviors {
         bindings = <&kp MINUS>, <&kp UNDER>;  // - _
         };
 
-
-&kscan0 {
-    debounce-press-ms = <30>;
-    debounce-release-ms = <30>;
-};
-
-/ {
     keymap {
         compatible = "zmk,keymap";
 
