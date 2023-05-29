@@ -4,114 +4,103 @@
 #include <dt-bindings/zmk/outputs.h>
 
 #define DEFAULT 0
-#define GAME   1
-#define ADJUST 2
-#define NUM 3
-#define FKEYS 4
-
-
+#define SYMBOL  1
+#define GAMING   2
+#define RAISE   3
+#define ADJUST  4
 
 #define HYPER(key) LS(LC(LA(LG(key))))
 #define MEH(key)   LS(LC(LA(key)))
-#define GG LS(RET)
-&sl { release-after-ms = <5000>;
+
+&sl {
+    release-after-ms = <5000>;
 };
 
-&kscan0 { 
-    debounce-press-ms = <30>; 
+behaviors {
+    LTHAN: less_then_tap {
+        compatible = "zmk,behavior-tap-dance";
+        label = "LESS_THEN_TAP";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&lt >, <&kp COMMA>; // > .
+        };
+    GTHAN: great_then_tap {
+        compatible = "zmk,behavior-tap-dance";
+        label = "GREAT_THEN_TAP";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&kp GT>, <&kp COMMA>; // < , 
+        };
+    FSLASH: f_slash_tap {
+        compatible = "zmk,behavior-tap-dance";
+        label = "F_SLASH_TAP";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&kp FSLH>, <&kp QMARK>; // / ?
+        };
+    COLONtd: colon_tap {
+        compatible = "zmk,behavior-tap-dance";
+        label = "COLON_TAP";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&kp SEMI>, <&kp COLON>; // ; :
+        };
+
+    // Symbol Layer bindings
+    BACKSLSHtd: backslash_tap {
+        compatible = "zmk,behavior-tap-dance";
+        label = "BACKSLASH_TAP";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&kp BSLH>, <&kp PIPE>; // \ |
+        };
+    };    
+    UNDERSCOREtd: underscore_tap {
+        compatible = "zmk,behavior-tap-dance";
+        label = "UNDERSCORE_TAP";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&kp MINUS>, <&kp UNDER>;  // - _
+        };
+
+
+&kscan0 {
+    debounce-press-ms = <30>;
     debounce-release-ms = <30>;
 };
 
 / {
-    combos {
-        compatible = "zmk,combos";
-        combo_gg {
-            timeout-ms = <50>;
-            key-positions = <45 46>;
-            bindings = <&kp LS(RET)>;
-        };
-    };
-};
-
-/{
-    macros {
-        ggs: ggs {
-            label = "ggs";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_tap &kp LS(RET)>
-                , <&macro_tap &kp G &kp G &kp RET>
-                ;
-        };
-    };
-};
-/ { keymap { 
-
+    keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             bindings = <
-    &kp ESC     &kp N1    &kp N2    &kp N3     &kp N4    &kp N5                             &kp N6    &kp N7    &kp N8    &kp N9    &kp N0   &tog GAME
-    &kp TAB     &kp Q     &kp W     &kp E      &kp R     &kp T                              &kp Y     &kp U     &kp I     &kp O     &kp P    &kp BSLH
-    &kp LALT    &kp A     &kp S     &kp D      &kp F     &kp G                              &kp H     &kp J     &kp K     &kp L     &kp SEMI &kp SQT
-    &mo ADJUST  &kp Z     &lt NUM X &kp C      &kp V     &kp B                              &kp N     &kp M     &kp COMMA &kp DOT   &kp FSLH &kp RSHFT
-                          &kp LEFT  &kp RIGHT                                                                 &kp LPAR  &kp RPAR
-                                                      &kp LSHIFT       &kp SPACE         &lt NUM RET  &kp RCTRL 
-                                                      &lt FKEYS BSPC   &mt LGUI ESC      &kp BSPC     &kp CAPS
-                                                      &kp LGUI         &kp LALT          &kp DEL      &lt ADJUST GRAVE
+          &kp Q   &kp W     &kp E    &kp R     &kp T                          &kp Y     &kp U     &kp I     &kp O    &kp P
+          &kp A   &kp S     &kp D    &kp F     &kp G                          &kp H     &kp J     &kp K     &kp L    &COLONtd
+          &kp Z   &kp X     &kp C    &kp V     &kp B                          &kp N     &kp M     &LTHAN    &GTHAN   &FSLASH
+&kp GRAVE                                                                                                                   &kp N
+                                     &kp LCTRL &kp RET  &kp LGUI    &kp DEL   &kp SPACE   &kp LALT
             >;
         };
 
-        game_layer {
+        symbol_layer {
             bindings = <
-    &trans     &trans    &trans   &trans    &trans    &ggs                             &trans    &trans    &trans    &trans    &trans    &trans
-    &trans     &kp T     &kp Q    &kp W     &kp E     &kp R                              &trans    &trans    &trans    &trans    &trans    &trans
-    &trans     &kp LSHFT &kp A    &kp S     &kp D     &kp F                              &trans    &trans    &trans    &trans    &trans    &trans
-    &kp LCTRL  &kp CAPS  &kp Z    &kp X     &kp C     &kp V                              &trans    &trans    &trans    &trans    &trans    &trans
-                         &kp F5   &kp G                                                                     &trans    &trans    
-                                                        &trans      &trans       &kp RET &trans
-                                                        &lt FKEYS RET &kp LALT    &trans    &trans   
-                                                        &trans      &kp BSPC     &trans    &trans   
+          &kp HASH   &kp TILDE   &kp LBRC   &kp RBRC     &BACKSLASH_TAP                 &kp PRCNT &kp N7     &kp N8     &kp N9    &kp PLUS
+          &kp AMPS   &kp EXCL    &kp LPAR   &kp RPAR     &UNDERSCOREtd                  &kp STAR  &kp N4     &kp N5     &kp N6    &kp MINUS
+          &kp AT     &kp GRAVE   &kp LBKT   &kp RBKT     &none                          &kp CARET &kp N1     &kp N2     &kp N3    &kp EQUAL
+&kp GRAVE                                                                                                                                  &kp N
+                                            &trans       &trans  &trans         &trans  &kp 0     &kp RET   
             >;
         };
-
-        adjust_layer {
+                
+        gaming_layer {
             bindings = <
-    &none       &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3  &bt BT_SEL 4                         &none       &none     &none     &none     &none    &none  
-    &trans      &out OUT_USB &kp K_VOL_DN &kp K_MUTE   &kp K_VOL_UP &none                                &none       &reset    &none     &none     &none    &none   
-    &trans      &out OUT_BLE &kp K_PREV   &kp K_PP     &kp K_NEXT    &reset                               &reset       &none     &none     &none     &none    &none   
-    &tog ADJUST &none        &bt BT_CLR   &none        &none         &bootloader                          &bootloader &none     &none     &none     &none    &none   
-                             &none        &none                                                                                &none     &none 
-                                                                  &none       &none       &none     &none 
-                                                                  &none       &none       &none     &none
-                                                                  &none       &none       &none     &none    
+          &kp T     &kp Q    &kp W    &kp E     &kp R                          &none       &kp F7     &kp F8     &kp F9    &none
+          &kp LSHFT &kp A    &kp S    &kp D     &kp F                          &kp F12     &kp F4     &kp F5     &kp F6    &none
+          &kp G     &kp Z    &kp X    &kp C     &kp V                          &kp F11     &kp F1     &kp F2     &kp F3    &none
+&kp GRAVE                                                                                                                   &kp N
+                                     &kp LCTRL &kp SPACE  &kp LALT   &kp DEL   &kp SPACE   &kp RET
             >;
         };
-
-        num_layer {
-            bindings = <
-    &trans      &kp DEL     &kp AT      &kp POUND   &kp DLLR     &kp BSLH                         &kp CARET   &kp AMPS  &kp STAR  &kp MINUS &kp PLUS  &kp EQUAL
-    &kp GRAVE   &kp DEL     &none       &kp LBKT    &kp RBKT     &trans                           &kp FSLH    &kp N7    &kp N8    &kp N9    &kp MINUS &kp BSPC
-    &trans      &kp MINUS   &kp EQUAL   &kp LPAR    &kp RPAR     &trans                           &kp STAR    &kp N4    &kp N5    &kp N6    &kp PLUS  &kp EQUAL
-    &kp LCTRL   &kp K_CUT   &kp K_UNDO  &kp LBRC    &kp RBRC   &kp K_REDO                           &kp COMMA   &kp N1    &kp N2    &kp N3    &kp DOT   &none
-                            &kp K_COPY    &kp K_PASTE                                                                       &kp N0    &kp RET    
-                                                        &trans  &trans      &trans    &trans
-                                                        &trans &trans      &trans    &trans   
-                                                        &trans  &trans     &trans    &trans   
-            >;
     };
-        fkeys_layer { 
-            bindings = <
-    &none   &none   &none    &none      &none     &none                          &none       &kp F10    &kp F11    &kp F12    &none    &none  
-    &none   &none   &none    &kp UP     &none     &none                          &none       &kp F7     &kp F8     &kp F9     &none    &none   
-    &none   &none   &kp LEFT &kp DOWN   &kp RIGHT &none                          &none       &kp F4     &kp F5     &kp F6     &none    &none   
-    &none   &none   &none    &none      &none     &none                          &none       &kp F1     &kp F2     &kp F3     &none    &none   
-                    &none    &none                                                            &none     &none 
-                                      &none       &none       &none     &none
-                                      &none       &none       &none     &none
-                                      &none       &none       &none     &none    
-            >;
-        };
-  };
 };
