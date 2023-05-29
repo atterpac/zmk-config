@@ -15,7 +15,7 @@
 &sl {
     release-after-ms = <5000>;
 };
-
+// {
 behaviors {
     LTHAN: less_then_tap {
         compatible = "zmk,behavior-tap-dance";
