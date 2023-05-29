@@ -4,8 +4,8 @@
 #include <dt-bindings/zmk/outputs.h>
 
 #define DEFAULT 0
-#define MAC     1
-#define LOWER   2
+#define SYMBOL  1
+#define GAMING   2
 #define RAISE   3
 #define ADJUST  4
 
@@ -15,6 +15,53 @@
 &sl {
     release-after-ms = <5000>;
 };
+
+behaviors {
+    LTHAN: less_then_tap {
+        compatible = "zmk,behavior-tap-dance";
+        label = "LESS_THEN_TAP";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&lt >, <&kp COMMA>; // > .
+        };
+    GTHAN: great_then_tap {
+        compatible = "zmk,behavior-tap-dance";
+        label = "GREAT_THEN_TAP";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&kp GT>, <&kp COMMA>; // < , 
+        };
+    FSLASH: f_slash_tap {
+        compatible = "zmk,behavior-tap-dance";
+        label = "F_SLASH_TAP";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&kp FSLH>, <&kp QMARK>; // / ?
+        };
+    COLONtd: colon_tap {
+        compatible = "zmk,behavior-tap-dance";
+        label = "COLON_TAP";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&kp SEMI>, <&kp COLON>; // ; :
+        };
+
+    // Symbol Layer bindings
+    BACKSLSHtd: backslash_tap {
+        compatible = "zmk,behavior-tap-dance";
+        label = "BACKSLASH_TAP";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&kp BSLH>, <&kp PIPE>; // \ |
+        };
+    };    
+    UNDERSCOREtd: underscore_tap {
+        compatible = "zmk,behavior-tap-dance";
+        label = "UNDERSCORE_TAP";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&kp MINUS>, <&kp UNDER>;  // - _
+        };
 
 
 &kscan0 {
@@ -28,65 +75,31 @@
 
         default_layer {
             bindings = <
-    &kp ESC   &kp N1    &kp N2   &kp N3    &kp N4    &kp N5                             &kp N6    &kp N7    &kp N8    &kp N9    &kp N0   &tog RAISE
-    &kp TAB   &kp Q     &kp W    &kp E     &kp R     &kp T                              &kp Y     &kp U     &kp I     &kp O     &kp P    &kp BSLH
-    &mo LOWER &kp A     &kp S    &kp D     &kp F     &kp G                              &kp H     &kp J     &kp K     &kp L     &kp SEMI &kp SQT
-    &kp LSHFT &kp Z     &kp X    &kp C     &kp V     &kp B                              &kp N     &kp M     &kp COMMA &kp DOT   &kp FSLH &kp RSHFT
-              &kp GRAVE &kp BSLH &kp LEFT  &kp RIGHT                                              &kp DOWN  &kp UP    &kp LBKT  &kp RBKT
-                                                      &kp EQUAL &kp MINUS   &kp LBKT  &kp RBKT
-                                                                &kp GRAVE   &kp BSPC
-                                            &kp LCTRL &kp LALT  &kp LGUI    &kp DEL   &kp RET   &kp SPACE
+          &kp Q   &kp W     &kp E    &kp R     &kp T                          &kp Y     &kp U     &kp I     &kp O    &kp P
+          &kp A   &kp S     &kp D    &kp F     &kp G                          &kp H     &kp J     &kp K     &kp L    &COLONtd
+          &kp Z   &kp X     &kp C    &kp V     &kp B                          &kp N     &kp M     &LTHAN    &GTHAN   &FSLASH
+&kp GRAVE                                                                                                                   &kp N
+                                     &kp LCTRL &kp RET  &kp LGUI    &kp DEL   &kp SPACE   &kp LALT
             >;
         };
 
-        mac_layer {
+        symbol_layer {
             bindings = <
-    &trans   &trans     &trans     &trans     &trans     &trans                     &trans     &trans    &trans    &trans    &trans   &trans  
-    &trans   &trans     &trans     &trans     &trans     &trans                     &trans     &trans    &trans    &trans    &trans   &trans  
-    &trans   &trans     &trans     &trans     &trans     &trans                     &trans     &trans    &trans    &trans    &trans   &trans  
-    &trans   &trans     &trans     &trans     &trans     &trans                     &trans     &trans    &trans    &trans    &trans   &trans  
-             &trans     &trans     &trans     &trans                                           &trans    &trans    &trans    &trans 
-                                                         &trans  &trans     &trans  &trans 
-                                                                 &trans     &trans    
-                                              &kp LGUI &kp LALT  &kp LCTRL  &trans  &trans     &trans    
+          &kp HASH   &kp TILDE   &kp LBRC   &kp RBRC     &BACKSLASH_TAP                 &kp PRCNT &kp N7     &kp N8     &kp N9    &kp PLUS
+          &kp AMPS   &kp EXCL    &kp LPAR   &kp RPAR     &UNDERSCOREtd                  &kp STAR  &kp N4     &kp N5     &kp N6    &kp MINUS
+          &kp AT     &kp GRAVE   &kp LBKT   &kp RBKT     &none                          &kp CARET &kp N1     &kp N2     &kp N3    &kp EQUAL
+&kp GRAVE                                                                                                                                  &kp N
+                                            &trans       &trans  &trans         &trans  &kp 0     &kp RET   
             >;
         };
-
-        lower_layer {
+                
+        gaming_layer {
             bindings = <
-    &kp F12    &kp F1    &kp F2   &kp F3     &kp F4    &kp F5                            &kp F6        &kp F7       &kp F8           &kp F9            &kp F10     &kp F11
-    &sl ADJUST &none     &none    &none      &none     &none                             &none         &kp LC(1)    &kp LC(PG_UP)    &kp LC(PG_DN)     &kp LC(9)   &none 
-    &trans     &kp CAPS  &none    &none      &none     &none                             &kp LEFT      &kp DOWN     &kp UP           &kp RIGHT         &none       &none 
-    &trans     &none     &none    &none      &none     &none                             &kp MEH(N)    &kp MEH(M)   &kp LG(LC(LEFT)) &kp LG(LC(RIGHT)) &kp LG(TAB) &trans 
-               &none     &kp C_PP &kp C_PREV &kp C_NEXT                                                &kp C_VOL_DN &kp C_VOL_UP     &kp C_MUTE        &none 
-                                                   &kp C_BRI_UP &kp C_BRI_DN   &kp PSCRN &kp INS
-                                                                &kp HOME       &kp PG_UP
-                                            &trans &trans       &kp END        &kp PG_DN &trans    &trans   
-            >;       };
-
-        raise_layer {
-            bindings = <
-    &trans    &trans    &trans   &trans    &trans    &trans                          &trans    &trans    &trans    &trans    &trans    &trans
-    &kp TAB   &kp T     &kp Q    &kp W     &kp E     &kp R                           &trans    &trans    &trans    &trans    &trans    &trans
-    &kp G     &kp LSHFT &kp A    &kp S     &kp D     &kp F                           &trans    &trans    &trans    &trans    &trans    &trans
-    &kp M     &trans    &trans   &trans    &trans    &trans                          &trans    &trans    &trans    &trans    &trans    &trans
-              &trans    &trans   &trans    &trans                                              &trans    &trans    &trans    &trans
-                                                     &trans    &trans      &trans    &trans
-                                                               &trans      &trans   
-                                           &kp SPACE &kp LCTRL &kp LALT    &trans    &trans    &trans   
-            >;
-        };
-
-        adjust_layer {
-            bindings = <
-    &none     &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                         &none       &none     &none     &none     &none    &none  
-    &trans    &out OUT_USB &out OUT_BLE &none        &reset       &tog MAC                             &none       &reset    &none     &none     &none    &none   
-    &trans    &none        &none        &none        &none        &none                                &none       &none     &none     &none     &none    &none   
-    &none     &none        &bt BT_CLR   &none        &none        &bootloader                          &bootloader &none     &none     &none     &none    &none   
-              &none        &none        &none        &none                                                         &none     &none     &none     &none 
-                                                                  &none       &none       &none     &none 
-                                                                              &none       &none    
-                                                         &none    &none       &none       &none     &none     &none    
+          &kp T     &kp Q    &kp W    &kp E     &kp R                          &none       &kp F7     &kp F8     &kp F9    &none
+          &kp LSHFT &kp A    &kp S    &kp D     &kp F                          &kp F12     &kp F4     &kp F5     &kp F6    &none
+          &kp G     &kp Z    &kp X    &kp C     &kp V                          &kp F11     &kp F1     &kp F2     &kp F3    &none
+&kp GRAVE                                                                                                                   &kp N
+                                     &kp LCTRL &kp SPACE  &kp LALT   &kp DEL   &kp SPACE   &kp RET
             >;
         };
     };
