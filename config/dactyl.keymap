@@ -84,7 +84,7 @@
 
         symbol_layer {
             bindings = <
-          &kp HASH   &kp TILDE   &kp LBRC   &kp RBRC     &BACKSLASH_TAP                 &kp PRCNT &kp N7     &kp N8     &kp N9    &kp PLUS
+          &kp HASH   &kp TILDE   &kp LBRC   &kp RBRC     &BACKSLASHtd                 &kp PRCNT &kp N7     &kp N8     &kp N9    &kp PLUS
           &kp AMPS   &kp EXCL    &kp LPAR   &kp RPAR     &UNDERSCOREtd                  &kp STAR  &kp N4     &kp N5     &kp N6    &kp MINUS
           &kp AT     &kp GRAVE   &kp LBKT   &kp RBKT     &none                          &kp CARET &kp N1     &kp N2     &kp N3    &kp EQUAL
 &kp GRAVE                                                                                                                                  &kp N
