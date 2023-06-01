@@ -1,0 +1,115 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
+
+#define DEFAULT 0
+#define SYMBOL  1
+#define GAMING   2
+#define RAISE   3
+#define ADJUST  4
+
+#define HYPER(key) LS(LC(LA(LG(key))))
+#define MEH(key)   LS(LC(LA(key)))
+
+&sl {
+    release-after-ms = <5000>;
+};
+
+&kscan0 {
+    debounce-press-ms = <30>;
+    debounce-release-ms = <30>;
+};
+
+/ {
+    behaviors {
+    LTHAN: less_then_tap {
+        compatible = "zmk,behavior-tap-dance";
+        label = "LESS_THEN_TAP";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&lt 1 LT >, <&kp COMMA>; // > .
+        };
+    GTHAN: great_then_tap {
+        compatible = "zmk,behavior-tap-dance";
+        label = "GREAT_THEN_TAP";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&lt  GT>, <&kp COMMA>; // < , 
+        };
+    FSLASH: f_slash_tap {
+        compatible = "zmk,behavior-tap-dance";
+        label = "F_SLASH_TAP";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&kp FSLH>, <&kp QMARK>; // / ?
+        };
+    COLONtd: colon_tap {
+        compatible = "zmk,behavior-tap-dance";
+        label = "COLON_TAP";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&kp SEMI>, <&kp COLON>; // ; :
+        };
+
+    // Symbol Layer bindings
+    BACKSLSHtd: backslash_tap {
+        compatible = "zmk,behavior-tap-dance";
+        label = "BACKSLASH_TAP";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&kp BSLH>, <&kp PIPE>; // \ |
+        };
+    };    
+    UNDERSCOREtd: underscore_tap {
+        compatible = "zmk,behavior-tap-dance";
+        label = "UNDERSCORE_TAP";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&kp MINUS>, <&kp UNDER>;  // - _
+        };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <
+          &kp Q   &kp W     &kp E    &kp R     &kp T                          &kp Y     &kp U     &kp I     &kp O    &kp P
+          &kp A   &kp S     &kp D    &kp F     &kp G                          &kp H     &kp J     &kp K     &kp L    &COLONtd
+          &kp Z   &lt 3 X     &kp C    &lt 2 V     &kp B                        &kp N     &lt 3 M   &LTHAN    &GTHAN   &FSLASH
+&kp GRAVE                                                                                                                   &kp N
+                                     &kp LCTRL &kp RET  &kp LGUI    &kp DEL   &kp SPACE   &kp LALT
+            >;
+        };
+
+        symbol_layer {
+            bindings = <
+          &kp HASH   &kp TILDE   &kp LBRC   &kp RBRC     &BACKSLSHtd                 &kp PRCNT &kp N7     &kp N8     &kp N9    &kp PLUS
+          &kp AMPS   &kp EXCL    &kp LPAR   &kp RPAR     &UNDERSCOREtd                  &kp STAR  &kp N4     &kp N5     &kp N6    &kp MINUS
+          &kp AT     &kp GRAVE   &kp LBKT   &kp RBKT     &none                          &kp CARET &kp N1     &kp N2     &kp N3    &kp EQUAL
+&kp GRAVE                                                                                                                                  &kp N
+                                            &trans       &trans  &trans         &trans  &kp 0     &kp RET   
+            >;
+        };
+                
+        gaming_layer {
+            bindings = <
+          &kp T     &kp Q    &kp W    &kp E     &kp R                          &none       &kp F7     &kp F8     &kp F9    &none
+          &kp LSHFT &kp A    &kp S    &kp D     &kp F                          &kp F12     &kp F4     &kp F5     &kp F6    &none
+          &kp G     &kp Z    &kp X    &kp C     &kp V                          &kp F11     &kp F1     &kp F2     &kp F3    &none
+&kp GRAVE                                                                                                                   &kp N
+                                     &kp LCTRL &kp SPACE  &kp LALT   &kp DEL   &kp SPACE   &kp RET
+            >;
+        };
+        
+        adjust_layer {
+            bindings = <
+          &bt BT_SEL 0  &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                          &none       &none    &none     &none    &none
+          &none         &none        &none        &none        &none                                 &none       &none    &none     &none    &none
+          &none         &none        &none        &none     &bootloader                          &bootlader      &none    &none     &none    &none
+&bt BT_CLR                                                                                                                                         &to 0
+                                     &none &none  &none                                      &none   &none       &none
+            >;
+        };
+    };
+};

@@ -28,14 +28,14 @@
         label = "LESS_THEN_TAP";
         #binding-cells = <0>;
         tapping-term-ms = <200>;
-        bindings = <&lt >, <&kp COMMA>; // > .
+        bindings = <&lt 1 LT >, <&kp COMMA>; // > .
         };
     GTHAN: great_then_tap {
         compatible = "zmk,behavior-tap-dance";
         label = "GREAT_THEN_TAP";
         #binding-cells = <0>;
         tapping-term-ms = <200>;
-        bindings = <&kp GT>, <&kp COMMA>; // < , 
+        bindings = <&lt  GT>, <&kp COMMA>; // < , 
         };
     FSLASH: f_slash_tap {
         compatible = "zmk,behavior-tap-dance";
@@ -76,7 +76,7 @@
             bindings = <
           &kp Q   &kp W     &kp E    &kp R     &kp T                          &kp Y     &kp U     &kp I     &kp O    &kp P
           &kp A   &kp S     &kp D    &kp F     &kp G                          &kp H     &kp J     &kp K     &kp L    &COLONtd
-          &kp Z   &kp X     &kp C    &kp V     &kp B                          &kp N     &kp M     &LTHAN    &GTHAN   &FSLASH
+          &kp Z   &lt 3 X     &kp C    &lt 2 V     &kp B                        &kp N     &lt 3 M   &LTHAN    &GTHAN   &FSLASH
 &kp GRAVE                                                                                                                   &kp N
                                      &kp LCTRL &kp RET  &kp LGUI    &kp DEL   &kp SPACE   &kp LALT
             >;
@@ -99,6 +99,16 @@
           &kp G     &kp Z    &kp X    &kp C     &kp V                          &kp F11     &kp F1     &kp F2     &kp F3    &none
 &kp GRAVE                                                                                                                   &kp N
                                      &kp LCTRL &kp SPACE  &kp LALT   &kp DEL   &kp SPACE   &kp RET
+            >;
+        };
+        
+        adjust_layer {
+            bindings = <
+          &bt BT_SEL 0  &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                          &none       &none    &none     &none    &none
+          &none         &none        &none        &none        &none                                 &none       &none    &none     &none    &none
+          &none         &none        &none        &none     &bootloader                          &bootlader      &none    &none     &none    &none
+&bt BT_CLR                                                                                                                                         &to 0
+                                     &none &none  &none                                      &none   &none       &none
             >;
         };
     };
