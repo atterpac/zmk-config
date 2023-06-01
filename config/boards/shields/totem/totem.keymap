@@ -23,6 +23,7 @@
 
 / {
     behaviors {
+
     td0: less_then_tap {
         compatible = "zmk,behavior-tap-dance";
         label = "LESS_THEN_TAP";
@@ -77,19 +78,29 @@
             bindings = <
           &kp Q   &kp W     &kp E    &kp R     &kp T                          &kp Y     &kp U     &kp I     &kp O    &kp P
           &kp A   &kp S     &kp D    &kp F     &kp G                          &kp H     &kp J     &kp K     &kp L    &kp FSLH
-          &kp Z   &lt 3 X     &kp C    &lt 2 V     &kp B                      &kp N     &lt 3 M   &lt 1 LT  &kp GT   &kp SEMI
-&kp GRAVE                                                                                                                   &to 2
-                                     &kp LCTRL &kp RET  &kp LGUI    &kp DEL   &kp SPACE   &kp LALT
+          &kp Z   &kp X     &lt 2 C  &kp V   &kp B                          &kp N       &lt 4 M   &lt 1 LT  &kp GT   &kp SEMI
+&to 1                                                                                                                        &to 2
+                                     &kp LCTRL &kp RET  &kp LGUI    &kp BSPC   &kp SPACE   &kp LALT
             >;
         };
 
         symbol_layer {
             bindings = <
-          &kp HASH   &kp TILDE   &kp LBRC   &kp RBRC     &td4                           &kp PRCNT &kp N7     &kp N8     &kp N9    &kp PLUS
-          &kp AMPS   &kp EXCL    &kp LPAR   &kp RPAR     &td5                           &kp STAR  &kp N4     &kp N5     &kp N6    &kp MINUS
-          &kp AT     &kp GRAVE   &kp LBKT   &kp RBKT     &none                          &kp CARET &kp N1     &kp N2     &kp N3    &kp EQUAL
-&kp GRAVE                                                                                                                                  &kp N
-                                            &trans       &trans  &trans         &trans  &kp 0     &kp RET   
+          &kp HASH   &kp TILDE   &kp LBRC   &kp RBRC     &td4                          &trans   &trans   &trans   &trans      &trans
+          &kp AMPS   &kp EXCL    &kp LPAR   &kp RPAR     &td5                           &trans   &trans   &trans   &trans      &trans
+          &kp AT     &kp GRAVE   &kp LBKT   &kp RBKT     &none                         &trans   &trans   &trans   &trans      &trans
+&none                                                                                                                                  &trans
+                                            &trans       &trans  &kp DEL         &trans  &trans     &trans   
+            >;
+        };
+
+        num_layer {
+            bindings = <
+          &trans   &trans   &trans   &trans      &trans                          &kp PRCNT &kp N7     &kp N8     &kp N9    &kp PLUS
+          &trans   &trans    &trans   &trans     &trans                         &kp STAR  &kp N4     &kp N5     &kp N6    &kp MINUS
+          &trans    &trans   &trans   &trans     &trans                         &kp CARET &kp N1     &kp N2     &kp N3    &kp EQUAL
+&trans                                                                                                                                  &kp N
+                                            &trans   &trans  &trans         &trans  &kp 0     &kp RET   
             >;
         };
                 
@@ -98,8 +109,8 @@
           &kp T     &kp Q    &kp W    &kp E     &kp R                          &none       &kp F7     &kp F8     &kp F9    &none
           &kp LSHFT &kp A    &kp S    &kp D     &kp F                          &kp F12     &kp F4     &kp F5     &kp F6    &none
           &kp G     &kp Z    &kp X    &kp C     &kp V                          &kp F11     &kp F1     &kp F2     &kp F3    &none
-&kp GRAVE                                                                                                                   &kp N
-                                     &kp LCTRL &kp SPACE  &kp LALT   &kp DEL   &kp SPACE   &kp RET
+&kp GRAVE                                                                                                                   &to 0 
+                                     &kp LCTRL &kp SPACE  &kp LALT   &kp BSPC   &lt 0 SPACE   &kp RET
             >;
         };
         
