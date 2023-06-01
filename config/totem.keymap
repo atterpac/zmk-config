@@ -80,7 +80,7 @@
           &kp A   &kp S     &kp D    &kp F     &kp G                          &kp H     &kp J     &kp K     &kp L    &kp FSLH
           &kp Z   &lt 3 X   &kp C    &lt 2 V   &kp B                          &kp N     &lt 3 M   &lt 1 LT  &kp GT   &kp SEMI
 &to 1                                                                                                                        &to 2
-                                     &kp LCTRL &kp RET  &kp LGUI    &mt DEL BSPC   &kp SPACE   &kp LALT
+                                     &kp LCTRL &kp RET  &kp LGUI    &kp BSPC   &kp SPACE   &kp LALT
             >;
         };
 
@@ -90,7 +90,7 @@
           &kp AMPS   &kp EXCL    &kp LPAR   &kp RPAR     &td5                           &kp STAR  &kp N4     &kp N5     &kp N6    &kp MINUS
           &kp AT     &kp GRAVE   &kp LBKT   &kp RBKT     &none                          &kp CARET &kp N1     &kp N2     &kp N3    &kp EQUAL
 &to 2                                                                                                                                  &kp N
-                                            &trans       &trans  &trans         &trans  &kp 0     &kp RET   
+                                            &trans       &trans  &kp DEL         &trans  &kp 0     &kp RET   
             >;
         };
                 
