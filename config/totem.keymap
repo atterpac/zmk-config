@@ -24,18 +24,6 @@
 / {
     behaviors {
 
-    delTap: delete_Tap {   
-        compatible = "zmk,behavior-event-hold-tap";
-         label = "TAP_KEY_DOUBLE_TAP";
-        #binding-cells = <0>;
-         tap-hold-time-ms = <200>;
-        tap-event {
-             bindings = <&kp BSPC>;
-        };
-        hold-event {
-            bindings = <&kp DEL>;
-        };
-        };
     td0: less_then_tap {
         compatible = "zmk,behavior-tap-dance";
         label = "LESS_THEN_TAP";
@@ -92,7 +80,7 @@
           &kp A   &kp S     &kp D    &kp F     &kp G                          &kp H     &kp J     &kp K     &kp L    &kp FSLH
           &kp Z   &lt 3 X   &kp C    &lt 2 V   &kp B                          &kp N     &lt 3 M   &lt 1 LT  &kp GT   &kp SEMI
 &to 1                                                                                                                        &to 2
-                                     &kp LCTRL &kp RET  &kp LGUI    &delTap   &kp SPACE   &kp LALT
+                                     &kp LCTRL &kp RET  &kp LGUI    &mt DEL BSPC   &kp SPACE   &kp LALT
             >;
         };
 
