@@ -79,8 +79,8 @@
           &kp Q   &kp W     &kp E    &kp R     &kp T                          &kp Y     &kp U     &kp I     &kp O    &kp P
           &kp A   &kp S     &kp D    &kp F     &kp G                          &kp H     &kp J     &kp K     &kp L    &kp FSLH
           &kp Z   &kp X     &lt 2 C  &kp V   &kp B                          &kp N       &lt 4 M   &lt 1 LT  &kp GT   &kp SEMI
-&kp TAB                                                                                                                        &to 2
-                                     &kp LCTRL &kp RET  &kp LGUI    &kp BSPC   &kp SPACE   &kp LALT
+&kp TAB                                                                                                                        &to 3
+                                     &kp LCTRL &mt LSHFT RET  &kp LGUI    &kp BSPC   &kp SPACE   &kp LALT
             >;
         };
 
