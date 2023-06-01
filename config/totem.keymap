@@ -24,7 +24,7 @@
 / {
     behaviors {
 
-    delTap {   
+    delTap: delete_Tap {   
         compatible = "zmk,behavior-event-hold-tap";
          label = "TAP_KEY_DOUBLE_TAP";
         #binding-cells = <0>;
