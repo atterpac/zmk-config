@@ -13,4 +13,3 @@
         , <&pro_micro 19 GPIO_ACTIVE_HIGH> // col11 in the schematic
         ;
 };
-yyuiohjmjkknm<>
