@@ -35,7 +35,7 @@
         label = "GREAT_THEN_TAP";
         #binding-cells = <0>;
         tapping-term-ms = <200>;
-        bindings = <&lt  GT>, <&kp COMMA>; 
+        bindings = <&kp GT>, <&kp COMMA>; 
         };
     td2: f_slash_tap {
         compatible = "zmk,behavior-tap-dance";
