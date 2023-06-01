@@ -112,7 +112,7 @@
           &kp LSHFT &kp A    &kp S    &kp D     &kp F                          &kp F12     &kp F4     &kp F5     &kp F6    &none
           &kp G     &kp Z    &kp X    &kp C     &kp V                          &kp F11     &kp F1     &kp F2     &kp F3    &none
 &kp GRAVE                                                                                                                   &kp N
-                                     &kp LCTRL &kp SPACE  &kp LALT   &kp DEL   &kp SPACE   &kp RET
+                                     &kp LCTRL &kp SPACE  &kp LALT   &kp DEL   &lt 0 SPACE   &kp RET
             >;
         };
         
