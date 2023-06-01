@@ -23,69 +23,70 @@
 
 / {
     behaviors {
-    LTHAN: less_then_tap {
+    td0: less_then_tap {
         compatible = "zmk,behavior-tap-dance";
         label = "LESS_THEN_TAP";
         #binding-cells = <0>;
         tapping-term-ms = <200>;
-        bindings = <&lt 1 LT >, <&kp COMMA>; // > .
+        bindings = <&lt 1 LT >, <&kp COMMA>;
         };
-    GTHAN: great_then_tap {
+    td1: great_then_tap {
         compatible = "zmk,behavior-tap-dance";
         label = "GREAT_THEN_TAP";
         #binding-cells = <0>;
         tapping-term-ms = <200>;
-        bindings = <&lt  GT>, <&kp COMMA>; // < , 
+        bindings = <&kp GT>, <&kp COMMA>; 
         };
-    FSLASH: f_slash_tap {
+    td2: f_slash_tap {
         compatible = "zmk,behavior-tap-dance";
         label = "F_SLASH_TAP";
         #binding-cells = <0>;
         tapping-term-ms = <200>;
-        bindings = <&kp FSLH>, <&kp QMARK>; // / ?
+        bindings = <&kp FSLH>, <&kp QMARK>; 
         };
-    COLONtd: colon_tap {
+    td3: colon_tap {
         compatible = "zmk,behavior-tap-dance";
         label = "COLON_TAP";
         #binding-cells = <0>;
         tapping-term-ms = <200>;
-        bindings = <&kp SEMI>, <&kp COLON>; // ; :
+        bindings = <&kp SEMI>, <&kp COLON>;
         };
 
     // Symbol Layer bindings
-    BACKSLSHtd: backslash_tap {
+    td4: backslash_tap {
         compatible = "zmk,behavior-tap-dance";
         label = "BACKSLASH_TAP";
         #binding-cells = <0>;
         tapping-term-ms = <200>;
-        bindings = <&kp BSLH>, <&kp PIPE>; // \ |
+        bindings = <&kp BSLH>, <&kp PIPE>;
         };
     };    
-    UNDERSCOREtd: underscore_tap {
+    td5: underscore_tap {
         compatible = "zmk,behavior-tap-dance";
         label = "UNDERSCORE_TAP";
         #binding-cells = <0>;
         tapping-term-ms = <200>;
-        bindings = <&kp MINUS>, <&kp UNDER>;  // - _
+        bindings = <&kp MINUS>, <&kp UNDER>;
         };
+};
 
-    keymap {
+/  {  keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             bindings = <
           &kp Q   &kp W     &kp E    &kp R     &kp T                          &kp Y     &kp U     &kp I     &kp O    &kp P
-          &kp A   &kp S     &kp D    &kp F     &kp G                          &kp H     &kp J     &kp K     &kp L    &COLONtd
-          &kp Z   &lt 3 X     &kp C    &lt 2 V     &kp B                        &kp N     &lt 3 M   &LTHAN    &GTHAN   &FSLASH
-&kp GRAVE                                                                                                                   &kp N
+          &kp A   &kp S     &kp D    &kp F     &kp G                          &kp H     &kp J     &kp K     &kp L    &td3
+          &kp Z   &lt 3 X     &kp C    &lt 2 V     &kp B                      &kp N     &lt 3 M   &lt 1 LT  &kp GT   &td2
+&kp GRAVE                                                                                                                   &to 2
                                      &kp LCTRL &kp RET  &kp LGUI    &kp DEL   &kp SPACE   &kp LALT
             >;
         };
 
         symbol_layer {
             bindings = <
-          &kp HASH   &kp TILDE   &kp LBRC   &kp RBRC     &BACKSLSHtd                 &kp PRCNT &kp N7     &kp N8     &kp N9    &kp PLUS
-          &kp AMPS   &kp EXCL    &kp LPAR   &kp RPAR     &UNDERSCOREtd                  &kp STAR  &kp N4     &kp N5     &kp N6    &kp MINUS
+          &kp HASH   &kp TILDE   &kp LBRC   &kp RBRC     &td4                           &kp PRCNT &kp N7     &kp N8     &kp N9    &kp PLUS
+          &kp AMPS   &kp EXCL    &kp LPAR   &kp RPAR     &td5                           &kp STAR  &kp N4     &kp N5     &kp N6    &kp MINUS
           &kp AT     &kp GRAVE   &kp LBKT   &kp RBKT     &none                          &kp CARET &kp N1     &kp N2     &kp N3    &kp EQUAL
 &kp GRAVE                                                                                                                                  &kp N
                                             &trans       &trans  &trans         &trans  &kp 0     &kp RET   
@@ -106,7 +107,7 @@
             bindings = <
           &bt BT_SEL 0  &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                          &none       &none    &none     &none    &none
           &none         &none        &none        &none        &none                                 &none       &none    &none     &none    &none
-          &none         &none        &none        &none     &bootloader                         &bootloader      &none    &none     &none    &none
+          &none         &none        &none        &none     &bootloader                          &bootloader      &none    &none     &none    &none
 &bt BT_CLR                                                                                                                                         &to 0
                                      &none &none  &none                                      &none   &none       &none
             >;
