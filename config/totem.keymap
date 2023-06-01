@@ -28,28 +28,28 @@
         label = "LESS_THEN_TAP";
         #binding-cells = <0>;
         tapping-term-ms = <200>;
-        bindings = <&lt 1 LT >, <&kp COMMA>; // > .
+        bindings = <&lt 1 LT >, <&kp COMMA>;
         };
     GTHAN: great_then_tap {
         compatible = "zmk,behavior-tap-dance";
         label = "GREAT_THEN_TAP";
         #binding-cells = <0>;
         tapping-term-ms = <200>;
-        bindings = <&lt  GT>, <&kp COMMA>; // < , 
+        bindings = <&lt  GT>, <&kp COMMA>; 
         };
     FSLASH: f_slash_tap {
         compatible = "zmk,behavior-tap-dance";
         label = "F_SLASH_TAP";
         #binding-cells = <0>;
         tapping-term-ms = <200>;
-        bindings = <&kp FSLH>, <&kp QMARK>; // / ?
+        bindings = <&kp FSLH>, <&kp QMARK>; 
         };
     COLONtd: colon_tap {
         compatible = "zmk,behavior-tap-dance";
         label = "COLON_TAP";
         #binding-cells = <0>;
         tapping-term-ms = <200>;
-        bindings = <&kp SEMI>, <&kp COLON>; // ; :
+        bindings = <&kp SEMI>, <&kp COLON>;
         };
 
     // Symbol Layer bindings
@@ -58,7 +58,7 @@
         label = "BACKSLASH_TAP";
         #binding-cells = <0>;
         tapping-term-ms = <200>;
-        bindings = <&kp BSLH>, <&kp PIPE>; // \ |
+        bindings = <&kp BSLH>, <&kp PIPE>;
         };
     };    
     UNDERSCOREtd: underscore_tap {
@@ -66,9 +66,9 @@
         label = "UNDERSCORE_TAP";
         #binding-cells = <0>;
         tapping-term-ms = <200>;
-        bindings = <&kp MINUS>, <&kp UNDER>;  // - _
+        bindings = <&kp MINUS>, <&kp UNDER>;
         };
-    };
+};
 
     keymap {
         compatible = "zmk,keymap";
@@ -78,7 +78,7 @@
           &kp Q   &kp W     &kp E    &kp R     &kp T                          &kp Y     &kp U     &kp I     &kp O    &kp P
           &kp A   &kp S     &kp D    &kp F     &kp G                          &kp H     &kp J     &kp K     &kp L    &COLONtd
           &kp Z   &lt 3 X     &kp C    &lt 2 V     &kp B                        &kp N     &lt 3 M   &LTHAN    &GTHAN   &FSLASH
-&kp GRAVE                                                                                                                   &kp N
+&kp GRAVE                                                                                                                   &to 2
                                      &kp LCTRL &kp RET  &kp LGUI    &kp DEL   &kp SPACE   &kp LALT
             >;
         };
