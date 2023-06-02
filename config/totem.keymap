@@ -80,7 +80,7 @@
           &kp A   &kp S     &kp D    &kp F     &kp G                          &kp H     &kp J     &kp K     &kp L    &kp FSLH
           &kp Z   &kp X     &lt 2 C  &kp V   &kp B                          &kp N       &lt 4 M   &lt 1 LT  &kp GT   &kp SEMI
 &kp TAB                                                                                                                        &to 3
-                                     &kp LCTRL &mt LSHFT RET  &kp SPACE    &kp BSPC   &kp RET   &kp LALT
+                                     &kp LCTRL &kp LSHFT  &mt LGUI SPACE    &kp BSPC   &kp RET   &kp LALT
             >;
         };
 
